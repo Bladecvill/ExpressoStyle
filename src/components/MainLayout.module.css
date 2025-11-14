@@ -1,0 +1,82 @@
+/* src/components/MainLayout.module.css */
+
+/* O "invólucro" que divide a tela */
+.layoutContainer {
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+
+/* A Área de Conteúdo Principal (onde as páginas vão) */
+.mainContent {
+  flex-grow: 1; /* Ocupa o resto do espaço */
+  padding: 25px;  
+  background-color: var(--light-color);
+}
+
+/* O Logo (baseado no seu style.css) */
+.logoArea {
+  display: flex;
+  border-bottom: 1px solid var(--cor-borda);
+
+  justify-content: space-between;
+  background-color: var(--primary-color);
+}
+
+.logoLink {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--light-color); /* Verde */
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+/* A Navegação (Abas) */
+.navArea {
+  padding: 1rem 0;
+}
+
+/* O container das abas (baseado no .nav-tabs do seu style.css) */
+.navTabs {
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+}
+
+.navLink {
+  width: 8.56rem;
+  height: 2.81rem;
+  border-radius: 0.5rem 0.5rem 0rem 0rem; 
+  
+  display: block;
+  padding: 0 1.25rem;
+  color: var(--dark-color);
+  text-decoration: none;
+  font-weight: 500;
+  
+  transition: var(--transition);
+}
+
+.navLink:hover {
+  background-color: #f0fdf9; /* Verde bem claro */
+  color: var(--primary-color);
+}
+
+/* O ESTADO ATIVO! */
+.navLink.active {
+  color: var(--primary-color);
+  font-weight: 700;
+  background-color: #e6f6f2; /* Verde claro */
+}
+
+/* Área do Utilizador (no fundo da sidebar) */
+.userArea {
+  padding: 1rem 1.25rem;
+  border-top: 1px solid var(--cor-borda);
+}
+
+.userArea span {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 10px;
+}
