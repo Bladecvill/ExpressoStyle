@@ -61,7 +61,7 @@ function FormFazerTransferencia({ onTransferenciaFeita }) {
       <div className="form-group">
         <label>De (Conta Origem)</label>
         <select
-          className="form-control"
+          className="form-control-home"
           value={contaOrigemId}
           onChange={(e) => setContaOrigemId(e.target.value)}
           required
@@ -78,7 +78,7 @@ function FormFazerTransferencia({ onTransferenciaFeita }) {
       <div className="form-group">
         <label>Para (Conta Destino)</label>
         <select
-          className="form-control"
+          className="form-control-home"
           value={contaDestinoId}
           onChange={(e) => setContaDestinoId(e.target.value)}
           required
@@ -98,7 +98,7 @@ function FormFazerTransferencia({ onTransferenciaFeita }) {
           type="number"
           step="0.01"
           min="0.01"
-          className="form-control"
+          className="form-control-home"
           value={valor}
           onChange={(e) => setValor(e.target.value)}
           placeholder="0.00"
@@ -110,7 +110,7 @@ function FormFazerTransferencia({ onTransferenciaFeita }) {
         <label>Data</label>
         <input
           type="date"
-          className="form-control"
+          className="form-control-home"
           value={data}
           onChange={(e) => setData(e.target.value)}
           required
@@ -119,7 +119,7 @@ function FormFazerTransferencia({ onTransferenciaFeita }) {
 
       {/* Ocupa as duas colunas */}
       <div className="form-group form-group-full form-group-submit">
-        <button type="submit" className="btn btn-primary w-100">
+        <button type="submit" className="btn btn-primary-home w-100">
           Confirmar Transferência
         </button>
       </div>

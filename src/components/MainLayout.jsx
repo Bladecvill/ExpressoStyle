@@ -8,7 +8,7 @@ import CardsResumoContainer from "./CardsResumoContainer";
 import styles from "./MainLayout.module.css";
 
 function MainLayout() {
-  const { utilizador, logout } = useAuth();
+  const { logout } = useAuth();
 
   // 2. DEFINIR A FUNÇÃO (Corrigindo o erro 'getNavLinkClass is not defined')
   const getNavLinkClass = ({ isActive }) => {
@@ -34,7 +34,7 @@ function MainLayout() {
         <ul className={styles.navTabs}>
           <li>
             <NavLink to="/" end className={getNavLinkClass}>
-              Dashboard
+              Geral
             </NavLink>
           </li>
           <li>

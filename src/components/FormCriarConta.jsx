@@ -68,7 +68,7 @@ function FormCriarConta({ clienteId, onContaCriada }) {
         />
       </div>
 
-      <button type="submit" className="btn btn-primary w-100">
+      <button type="submit" className="btn btn-primary-home w-100">
         Salvar Conta
       </button>
     </form>

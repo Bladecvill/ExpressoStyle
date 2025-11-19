@@ -40,7 +40,7 @@ function FormSacarDaMeta({ meta, contasCorrente, clienteId, onTransferenciaFeita
           type="number"
           step="0.01"
           min="0.01"
-          className="form-control"
+          className="form-control-home"
           value={valor}
           onChange={(e) => setValor(e.target.value)}
           placeholder="50.00"
@@ -50,7 +50,7 @@ function FormSacarDaMeta({ meta, contasCorrente, clienteId, onTransferenciaFeita
       <div className="form-group">
         <label>Enviar para a Conta:</label>
         <select
-          className="form-control"
+          className="form-control-home"
           value={contaId}
           onChange={(e) => setContaId(e.target.value)}
           required

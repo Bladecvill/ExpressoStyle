@@ -88,7 +88,7 @@ function FormGuardarNaMeta({ meta, contasCorrente, clienteId, onTransferenciaFei
             type="number"
             step="0.01"
             min="0.01"
-            className="form-control"
+            className="form-control-home"
             value={valor}
             onChange={(e) => setValor(e.target.value)}
             placeholder="0.00"
@@ -100,7 +100,7 @@ function FormGuardarNaMeta({ meta, contasCorrente, clienteId, onTransferenciaFei
       <div className="form-group mb-3">
         <label style={{fontSize: '0.9em'}}>Tirar de qual conta?</label>
         <select
-          className="form-control"
+          className="form-control-home"
           value={contaId}
           onChange={(e) => setContaId(e.target.value)}
           required

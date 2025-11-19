@@ -1,52 +1,54 @@
 /* src/pages/ContasPage.module.css */
 
-/* Uma grelha que se adapta ao tamanho da tela */
+/* Container principal para colocar lado a lado */
+.layoutGrid {
+  display: grid;
+  grid-template-columns: 350px 1fr; /* Esquerda fixa (350px), Direita flexível (resto) */
+  gap: 30px; /* Espaço entre o formulário e a lista */
+  align-items: start; /* Alinha ambos ao topo */
+  margin-top: 20px;
+  justify-content: space-between;
+}
+
+/* Estilo para a coluna da esquerda (Formulário) */
+.formColumn {
+  position: sticky; /* Opcional: faz o formulário fixar ao rolar */
+  top: 90px; /* Ajuste conforme a altura do seu header */
+}
+
+/* Estilo para a coluna da direita (Lista) */
+.listColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Título da seção da direita */
+.sectionTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-color-dark);
+  margin-bottom: 10px;
+}
+
+/* RESPONSIVIDADE: Em tablets/celulares, volta a ficar um embaixo do outro */
+@media (max-width: 992px) {
+  .layoutGrid {
+    grid-template-columns: 1fr; /* Uma única coluna */
+
+  }
+  
+  .formColumn {
+    position: static; /* Remove o efeito sticky no mobile */
+  }
+}
+
+/* --- MANTENHA SEUS ESTILOS ANTIGOS DE CARD ABAIXO --- */
 .grid {
   display: grid;
-  /* Cria colunas de no mínimo 280px */
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
   list-style: none;
   padding: 0;
-  margin-top: 20px;
 }
-
-/* O estilo de cada "Card" de Conta */
-.contaCard {
-  background-color: var(--cor-branco);
-  border: 1px solid var(--cor-borda);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  padding: 20px;
-  transition: var(--transition);
-  /* Borda verde (do seu tema) */
-  border-left: 5px solid var(--primary-color); 
-}
-
-.contaCard:hover {
-  transform: translateY(-5px); /* Efeito de "levantar" */
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
-}
-
-/* O Nome da Conta (ex: "Carteira") */
-.cardNome {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--primary-color); /* Verde */
-  margin-bottom: 5px;
-}
-
-/* O Tipo da Conta (ex: "conta corrente") */
-.cardTipo {
-    font-size: 0.85rem;
-    color: #6c757d;
-    margin-bottom: 15px;
-    text-transform: capitalize; /* Deixa a primeira letra maiúscula */
-}
-
-/* O Saldo da Conta */
-.cardSaldo {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: var(--dark-color);
-}
+/* ... resto do seu CSS ... */

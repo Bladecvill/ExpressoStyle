@@ -133,7 +133,7 @@ function FormCriarTransacao({ onTransacaoCriada }) {
 
       <div className="form-group mb-3">
         <label className="form-label">Tipo:</label>
-        <select value={tipo} onChange={(e) => setTipo(e.target.value)} className="form-control" required>
+        <select value={tipo} onChange={(e) => setTipo(e.target.value)} className="form-control-home" required>
           <option value="DESPESA">Despesa</option>
           <option value="RECEITA">Receita</option>
         </select>
@@ -147,7 +147,7 @@ function FormCriarTransacao({ onTransacaoCriada }) {
           value={valor} 
           onChange={(e) => setValor(e.target.value)} 
           placeholder="Ex: 50.00"
-          className="form-control"
+          className="form-control-home"
           required 
         />
       </div>
@@ -159,7 +159,7 @@ function FormCriarTransacao({ onTransacaoCriada }) {
         <select 
             value={contaId} 
             onChange={(e) => setContaId(e.target.value)} 
-            className="form-control" 
+            className="form-control-home" 
             required
         >
           <option value="" disabled>Selecione uma conta...</option>
@@ -186,7 +186,7 @@ function FormCriarTransacao({ onTransacaoCriada }) {
               placeholder="Nome da nova categoria..."
               value={novaCategoriaNome}
               onChange={(e) => setNovaCategoriaNome(e.target.value)}
-              className="form-control"
+              className="form-control-home"
             />
             <button 
               type="button" 
@@ -197,7 +197,7 @@ function FormCriarTransacao({ onTransacaoCriada }) {
             </button>
           </div>
         ) : (
-          <select value={categoriaId} onChange={handleCategoriaChange} className="form-control" required>
+          <select value={categoriaId} onChange={handleCategoriaChange} className="form-control-home" required>
             <option value="" disabled>Selecione uma categoria...</option>
             {categoriasVisiveis && categoriasVisiveis.map(categoria => (
               <option key={categoria.id} value={categoria.id}>
@@ -217,7 +217,7 @@ function FormCriarTransacao({ onTransacaoCriada }) {
           type="text" 
           value={descricao} 
           onChange={(e) => setDescricao(e.target.value)} 
-          className="form-control"
+          className="form-control-home"
           placeholder="Ex: Almoço, Salário..."
         />
       </div>
@@ -228,12 +228,12 @@ function FormCriarTransacao({ onTransacaoCriada }) {
           type="datetime-local" 
           value={dataOperacao} 
           onChange={(e) => setDataOperacao(e.target.value)} 
-          className="form-control"
+          className="form-control-home"
           required 
         />
       </div>
 
-      <button type="submit" className="btn btn-primary w-100">
+      <button type="submit" className="btn btn-primary-home w-100">
         Adicionar Transação
       </button>
     </form>

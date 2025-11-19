@@ -61,7 +61,7 @@ function FormCriarMeta({ clienteId, onMetaCriada }) {
         <label>Nome do Objetivo</label>
         <input
           type="text"
-          className="form-control"
+          className="form-control-home"
           value={nome}
           onChange={(e) => setNome(e.target.value)}
           placeholder="Ex: PlayStation 5"
@@ -75,7 +75,7 @@ function FormCriarMeta({ clienteId, onMetaCriada }) {
         <input
           type="number"
           step="0.01"
-          className="form-control"
+          className="form-control-home"
           value={valorAlvo}
           onChange={(e) => setValorAlvo(e.target.value)}
           placeholder="0.00"
@@ -88,14 +88,14 @@ function FormCriarMeta({ clienteId, onMetaCriada }) {
         <label>Data Alvo</label>
         <input 
           type="date" 
-          className="form-control"
+          className="form-control-home"
           value={dataAlvo}
           onChange={(e) => setDataAlvo(e.target.value)}
           required
         />
       </div>
       
-      <button type="submit" className={"btn-primary"}>
+      <button type="submit" className={"btn-primary-home"}>
         Criar Meta
       </button>
       

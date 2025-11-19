@@ -159,6 +159,18 @@
   border-color: none;
 }
 
+.btn-primary-home{
+  width: 50%;
+  height: 40px;
+  /* O botão nas imagens é verde-claro (success) */
+  background-color: var(--primary-color); /* */
+  border: none;
+  font-size: 18px;
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
 .btn-secondary {
   width: 25%;
   height: 56px;
@@ -286,6 +298,16 @@
 /* ============================================== */
 /* === ESTILOS DO LAYOUT PRINCIPAL (APP) === */
 /* ============================================== */
+
+.form-control-home{
+  width: 50%;
+  height: 40px;
+  padding-left: 16px; /* Padding interno */
+  padding-right: 16px;
+  border-radius: var(--border-radius);
+  border: 2px solid gray;
+  font-size: 16px;
+}
 
 .app-layout {
   min-height: 100vh;

@@ -82,7 +82,7 @@ function CategoriaItem({ categoria }) {
           >
             <input
               type="text"
-              className="form-control" // Aplicamos a classe
+              className="form-control-home" // Aplicamos a classe
               value={nomeEditado}
               onChange={(e) => setNomeEditado(e.target.value)}
             />
@@ -143,12 +143,12 @@ function GerenciadorCategorias() {
       <form onSubmit={handleAdd} className="form-add-categoria">
         <input
           type="text"
-          className="form-control" // Aplicamos a classe
+          className="form-control-home" // Aplicamos a classe
           value={novoNome}
           onChange={(e) => setNovoNome(e.target.value)}
           placeholder="Nome da nova categoria"
         />
-        <button type="submit" className="btn btn-primary"> {/* Aplicamos a classe */}
+        <button type="submit" className="btn btn-primary-home"> {/* Aplicamos a classe */}
           Adicionar
         </button>
       </form>

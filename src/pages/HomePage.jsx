@@ -200,7 +200,7 @@ function HomePage() {
   };
 
   if (loading) {
-    return <div>A carregar dashboard...</div>;
+    return <div>A carregar Tela...</div>;
   }
 
   // --- ESTILOS CUSTOMIZADOS ---
@@ -209,7 +209,7 @@ function HomePage() {
 
   return (
     <div>
-      <h2>Dashboard</h2>
+      <h2>Geral</h2>
 
       <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '20px' }}>
 
@@ -218,12 +218,12 @@ function HomePage() {
           {/* --- FILTROS --- */}
           <div className="card" style={{ padding: '20px', backgroundColor: 'var(--cor-branco)', marginBottom: '20px' }}>
             {/* ... (toda a lógica de filtros continua igual) ... */}
-            <h4>Filtros do Dashboard</h4>
+            <h4>Filtros gerais</h4>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
 
               <div className="form-group">
                 <label>Período</label>
-                <select className="form-control" value={dateRange} onChange={(e) => setDateRange(e.target.value)}>
+                <select className="form-control-home" value={dateRange} onChange={(e) => setDateRange(e.target.value)}>
                   <option value="mesAtual">Mês Atual</option>
                   <option value="7dias">Últimos 7 Dias</option>
                   <option value="personalizado">Personalizado</option>
@@ -232,7 +232,7 @@ function HomePage() {
 
               <div className="form-group">
                 <label>Tipo (p/ Pizza)</label>
-                <select className="form-control" value={tipoFiltro} onChange={(e) => setTipoFiltro(e.target.value)}>
+                <select className="form-control-home" value={tipoFiltro} onChange={(e) => setTipoFiltro(e.target.value)}>
                   <option value="DESPESA">Despesas</option>
                   <option value="RECEITA">Receitas</option>
                   <option value="todos">Todas</option>
@@ -243,11 +243,11 @@ function HomePage() {
                 <>
                   <div className="form-group">
                     <label>Data Início</label>
-                    <input type="date" className="form-control" value={dataInicio} onChange={(e) => setDataInicio(e.target.value)} />
+                    <input type="date" className="form-control-home" value={dataInicio} onChange={(e) => setDataInicio(e.target.value)} />
                   </div>
                   <div className="form-group">
                     <label>Data Fim</label>
-                    <input type="date" className="form-control" value={dataFim} onChange={(e) => setDataFim(e.target.value)} />
+                    <input type="date" className="form-control-home" value={dataFim} onChange={(e) => setDataFim(e.target.value)} />
                   </div>
                 </>
               )}
@@ -327,7 +327,7 @@ function HomePage() {
 
               <div className="form-group">
                 <label>Categoria</label>
-                <select className="form-control" value={categoriaId} onChange={(e) => setCategoriaId(e.target.value)}>
+                <select className="form-control-home" value={categoriaId} onChange={(e) => setCategoriaId(e.target.value)}>
                   <option value="todas">Todas as Categorias</option>
                   {categorias && categorias.map(c => (
                     <option key={c.id} value={c.id}>{c.nome}</option>

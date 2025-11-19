@@ -207,7 +207,7 @@ function PerfilPage() {
                   <label>Senha Atual:</label>
                   <input
                     type="password"
-                    className="form-control"
+                    className="form-control-home"
                     value={deletePassword}
                     onChange={(e) => setDeletePassword(e.target.value)}
                     placeholder="Sua senha atual"

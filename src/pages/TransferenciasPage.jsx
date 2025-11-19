@@ -74,12 +74,12 @@ function TransferenciasPage() {
 
       <form onSubmit={handleSubmit}>
 
-        <div className="form-group">
+        <div className="form-group-home">
           <label>Conta de Origem:</label>
           <select 
             value={contaOrigemId} 
             onChange={(e) => setContaOrigemId(e.target.value)} 
-            className="form-control" 
+            className="-home" 
             required
           >
             <option value="" disabled>Selecione a conta de origem...</option>
@@ -101,7 +101,7 @@ function TransferenciasPage() {
           <select 
             value={contaDestinoId} 
             onChange={(e) => setContaDestinoId(e.target.value)} 
-            className="form-control" 
+            className="form-control-home" 
             required
           >
             <option value="" disabled>Selecione a conta de destino...</option>
@@ -125,7 +125,7 @@ function TransferenciasPage() {
             min="0.01"
             value={valor}
             onChange={(e) => setValor(e.target.value)}
-            className="form-control"
+            className="form-control-home"
             placeholder="100.00"
             required
           />
@@ -136,7 +136,7 @@ function TransferenciasPage() {
             type="text"
             value={descricao}
             onChange={(e) => setDescricao(e.target.value)}
-            className="form-control"
+            className="form-control-home"
             placeholder="Ex: Transferência para poupança"
           />
         </div>
@@ -146,11 +146,11 @@ function TransferenciasPage() {
             type="datetime-local"
             value={dataOperacao}
             onChange={(e) => setDataOperacao(e.target.value)}
-            className="form-control"
+            className="form-control-home"
             required
           />
         </div>
-        <button type="submit" className="btn btn-primary w-100">
+        <button type="submit" className="btn btn-primary-home w-100">
           Realizar Transferência
         </button>
 

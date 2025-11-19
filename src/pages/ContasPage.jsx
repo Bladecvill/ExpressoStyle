@@ -4,16 +4,16 @@ import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useData } from '../context/DataContext';
 import FormCriarConta from '../components/FormCriarConta';
-import ModalEditarConta from '../components/ModalEditarConta'; // Importar o Modal
+import ModalEditarConta from '../components/ModalEditarConta';
 import axios from 'axios';
+// IMPORTANTE: Importe os estilos do módulo
+import styles from './ContasPage.module.css';
 
 const API_BASE_URL = 'http://localhost:8080/api';
 
 function ContasPage() {
   const { contas, loading, refreshContas } = useData();
   const { utilizador } = useAuth();
-  
-  // Estado para controlar qual conta estamos a editar (null = nenhuma)
   const [contaParaEditar, setContaParaEditar] = useState(null);
 
   const handleDelete = async (id) => {
@@ -29,81 +29,88 @@ function ContasPage() {
 
   if (loading) return <div>A carregar dados...</div>;
 
-  // Pode remover o .filter se quiser ver todas, ou manter
-  const listaContas = contas; 
-
   return (
     <div>
       <div className="page-header">
         <h2>Gestão de Contas</h2>
       </div>
 
-      {/* Formulário de Criação (Fica sempre no topo) */}
-      <div className="card" style={{ marginBottom: '2rem' }}>
-        <FormCriarConta 
-          clienteId={utilizador.id} 
-          onContaCriada={refreshContas} 
-        />
+      {/* --- NOVO LAYOUT: LADO A LADO --- */}
+      <div className={styles.layoutGrid}>
+        
+        {/* COLUNA DA ESQUERDA: Formulário */}
+        <div className={styles.formColumn}>
+          <div className="card">
+            {/* Título opcional dentro do card do formulário */}
+            <h4 style={{ marginBottom: '15px', color: 'var(--primary-color)' }}>Nova Conta</h4>
+            <FormCriarConta
+              clienteId={utilizador.id}
+              onContaCriada={() => {
+                refreshContas();
+              }}
+            />
+          </div>
+        </div>
+
+        {/* COLUNA DA DIREITA: Lista de Carteiras */}
+        <div className={styles.listColumn}>
+          <h3 className={styles.sectionTitle}>Minhas Carteiras</h3>
+          
+          <ul className="contas-list" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '20px', listStyle: 'none', padding: 0 }}>
+            {contas.length > 0 ? (
+              contas.map(conta => (
+                <li key={conta.id} className="conta-item-card" style={{ background: '#fff', padding: '20px', borderRadius: '8px', boxShadow: '0 2px 5px rgba(0,0,0,0.05)', borderLeft: '5px solid var(--primary-color)' }}>
+                  
+                  <div className="conta-item-header" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
+                    <h3 style={{ margin: 0, fontSize: '1.1rem' }}>{conta.nome}</h3>
+                    <span className="conta-tipo" style={{ fontSize: '0.8rem', background: '#eee', padding: '2px 6px', borderRadius: '4px' }}>
+                      {conta.tipo ? conta.tipo.replace('_', ' ') : 'Conta'}
+                    </span>
+                  </div>
+
+                  <div 
+                    className="conta-saldo"
+                    style={{ color: conta.saldoAtual >= 0 ? '#2ecc71' : '#e74c3c', fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '15px' }}
+                  >
+                    R$ {conta.saldoAtual.toFixed(2)}
+                  </div>
+
+                  <div className="conta-actions" style={{ display: 'flex', gap: '10px' }}>
+                    <button 
+                      className="btn-editar"
+                      style={{ flex: 1, padding: '5px', border: '1px solid #ddd', background: 'transparent', borderRadius: '4px', cursor: 'pointer' }}
+                      onClick={() => setContaParaEditar(conta)}
+                    >
+                      Editar
+                    </button>
+                    
+                    <button 
+                      className="btn-excluir"
+                      style={{ flex: 1, padding: '5px', border: '1px solid #fee', background: '#fff5f5', color: 'red', borderRadius: '4px', cursor: 'pointer' }}
+                      onClick={() => handleDelete(conta.id)}
+                    >
+                      Excluir
+                    </button>
+                  </div>
+
+                </li>
+              ))
+            ) : (
+              <p>Nenhuma conta encontrada.</p>
+            )}
+          </ul>
+        </div>
+
       </div>
+      {/* --- FIM DO NOVO LAYOUT --- */}
 
-      <hr className="divider" />
-
-      <h3>Minhas Contas ({listaContas.length})</h3>
-
-      {/* GRID ORGANIZADO (Usa as classes do style.css) */}
-      <ul className="contas-grid">
-        {listaContas.length > 0 ? (
-          listaContas.map(conta => (
-            <li key={conta.id} className="conta-card">
-              
-              {/* Cabeçalho do Card: Nome e Tipo */}
-              <div className="conta-card-header">
-                <span className="conta-nome">{conta.nome}</span>
-                <span className="conta-tipo">
-                  {conta.tipo ? conta.tipo.replace('_', ' ') : 'Conta'}
-                </span>
-              </div>
-
-              {/* Saldo com Cor */}
-              <div 
-                className="conta-saldo"
-                style={{ color: conta.saldoAtual >= 0 ? '#2ecc71' : '#e74c3c' }}
-              >
-                R$ {conta.saldoAtual.toFixed(2)}
-              </div>
-
-              {/* Botões de Ação */}
-              <div className="conta-actions">
-                <button 
-                  className="btn-editar"
-                  onClick={() => setContaParaEditar(conta)}
-                >
-                  Editar
-                </button>
-                
-                <button 
-                  className="btn-excluir"
-                  onClick={() => handleDelete(conta.id)}
-                >
-                  Excluir
-                </button>
-              </div>
-
-            </li>
-          ))
-        ) : (
-          <p>Nenhuma conta encontrada.</p>
-        )}
-      </ul>
-
-      {/* MODAL DE EDIÇÃO (Só aparece se houver uma conta selecionada) */}
+      {/* MODAL DE EDIÇÃO */}
       {contaParaEditar && (
         <ModalEditarConta 
           conta={contaParaEditar}
           onClose={() => setContaParaEditar(null)}
           onSave={() => {
-            refreshContas(); // Recarrega a lista
-            // O modal fecha-se sozinho no componente, mas podemos garantir aqui
+            refreshContas();
           }}
         />
       )}
